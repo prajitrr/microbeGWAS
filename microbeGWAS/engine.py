@@ -62,7 +62,7 @@ def main():
     half_len = np.floor((length)/2)
     
     #Read in phenotypes
-    phen_array = (pd.read_csv(args.phenotype, sep='\t', nrows=length)["Phenotype"])
+    phen_array = (pd.read_csv(args.phenotype, sep='\t', nrows=length)["Phenotype"]).values
     phen_array[np.isnan(phen_array)] = 255
     phen_array = phen_array.astype(np.uint8)
     
