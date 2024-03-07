@@ -82,7 +82,7 @@ def main():
     
     #Run GWAS
     pruned_snp_array = pruned_array[:,1:length].transpose()
-    pruned_snp_array =  np.concatenate((pruned_snp_array, phen_array.reshape(-1, 1))[:length-2], axis=1)
+    pruned_snp_array =  np.concatenate((pruned_snp_array, phen_array[:length-2].reshape(-1, 1)), axis=1)
     drops = pruned_snp_array[:, -1] == 255
     pruned_snp_array = pruned_snp_array[~drops]
 
