@@ -57,14 +57,15 @@ def main():
 
     pos_array = read_np_array(args.positions)
     snp_array = read_np_matrix(args.snps)
+
+    length = len(snp_array[0])
+    half_len = np.floor((length)/2)
     
     #Read in phenotypes
     phen_array = (pd.read_csv(args.phenotype, sep='\t', nrows=length)["Phenotype"])
     phen_array[np.isnan(phen_array)] = 255
     phen_array = phen_array.astype(np.uint8)
     
-    length = len(snp_array[0])
-    half_len = np.floor((length)/2)
 
     #Perform LD pruning
     sums = np.sum(snp_array, axis=1).reshape(-1,1)
