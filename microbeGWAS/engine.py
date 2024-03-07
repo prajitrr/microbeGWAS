@@ -96,9 +96,9 @@ def main():
         header = "POS\tBETA\tF1"
 
     if args.out:
-        save_to_file_with_header(args.out, data, header):
+        save_to_file_with_header(args.out, data, header)
     else:
-        save_to_file_with_header(sys.stdout, data, header):
+        save_to_file_with_header(sys.stdout, data, header)
         
 
 if __name__ == "__main__":
