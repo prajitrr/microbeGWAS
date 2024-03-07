@@ -31,7 +31,7 @@ The using the following syntax, input the files from the previous step along wit
 ```
 microbeGWAS ~/PATH_TO_POSITION_FILE/pos.txt ~/PATH_TO_SNP_FILE/snp.txt ~/PATH_TO_PHEN_FILE.tsv -o output.txt
 ```
-The current output produced is a list of all SNPs after minimal LD pruning along with their effect sizes. 
+The current output produced is a tab-delimited list of all SNPs after minimal LD pruning along with their effect sizes. 
 If no output file is specified, the program will write to stdout.
 An optional flag `--test` or `t` can also be added to invoke a train-test split of 80:20. A logistic model is first fit on the train data and then tested on the test set, and the F1 score that results is outputted. Otherwise, the entire dataset is used to fit the model.
 
