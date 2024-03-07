@@ -5,4 +5,4 @@ This package implements a version of GWAS that is specific to bacterial genomes 
 
 The data used is simulated data from the tool [BacGWASim](https://www.microbiologyresearch.org/content/journal/mgen/10.1099/mgen.0.000337). This tool simulates a phylogenetic tree of genomes in order to impose mutation and recombination upon a bacterial genome, resulting in a set of generated genomes and corresponding phenotypes. The pre-generated simulation dataset for [sample size 700](https://figshare.com/articles/bacterial_GWAS_benchmark_simulations_Sample_size_700/9956426), which has exactly 100000 SNPs was used to test the package.
 
-Installation 
+# Installation 
