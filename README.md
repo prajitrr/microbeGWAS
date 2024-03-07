@@ -34,7 +34,8 @@ If no output file is specified, the program will write to stdout.
 An optional flag `--test` or `t` can also be added to invoke a train-test split of 80:20. A logistic model is first fit on the train data and then tested on the test set, and the F1 score that results is outputted. Otherwise, the entire dataset is used to fit the model.
 
 # TODO
-Implement a better way to calculate p-values for the effect sizes. The current method, which is not implemented here is too RAM intensive due to having to invert a Hessian matrix of a significant size. This will likely involve increasing the severity of LD pruning beyond only complete LD.
-Combine the bcftools step into the whole script to make the workflow more streamlined and faster.
-Benchmark the tool against plink or another tool.
-Port the logistic classifer and pandas file reading over to numpy so that the only dependencies are bcftools and numpy.
+Implement a better way to calculate p-values for the effect sizes. \\
+The current method, which is not implemented here is too RAM intensive due to having to invert a Hessian matrix of a significant size. This will likely involve increasing the severity of LD pruning beyond only complete LD.\\
+Combine the bcftools step into the whole script to make the workflow more streamlined and faster.\\
+Benchmark the tool against plink or another tool.\\
+Port the logistic classifer and pandas file reading over to numpy so that the only dependencies are bcftools and numpy.\\
