@@ -9,11 +9,17 @@ import sys
 from sklearn import linear_model
 from sklearn.metrics import f1_score
 
-def read_np_matrix(binary_string):
-    return np.array([np.fromiter((chr(c) for c in l.strip()), dtype=np.uint8) for l in binary_string])
+def read_np_matrix(path):
+    with open(path, "rb") as f:
+        return np.array(
+            [np.fromiter((chr(c) for c in l.strip()), dtype=np.uint8) for l in f],
+        )
 
-def read_np_array(binary_string):
-    return np.array([int(l.strip()) for l in binary_string]).astype(np.uint8)
+def read_np_array(path):
+    with open(path, "rb") as f:
+        return np.array(
+            [int(l.strip()) for l in f],
+        ).astype(np.uint8)
 
 def row_removal(chunk):
     comparison = chunk[:,1:]
@@ -29,7 +35,10 @@ def main():
     parser = argparse.ArgumentParser(prog="microbeGWAS", 
                                      description="Command-line tool to perform GWAS on haploid bacterial data."
                                     )
-    parser.add_argument("vcf", help="Input VCF file, zipped or unzipped", \
+    parser.add_argument("positions", help="Text file of SNP positions.", \
+                       type=str)
+
+    parser.add_argument("snps", help="Text file of SNPS.", \
                        type=str)
   
     parser.add_argument("phenotype", help="Specify TSV file of phenotypes for each sample.", \
@@ -43,9 +52,12 @@ def main():
     args = parser.parse_args()
 
     #Call bcftools to process the VCF file and capture the output
-    snp_array = np.genfromtxt(subprocess.run("bcftools query -f '[%GT]\n'" + " " + args.vcf, shell=True, capture_output=True, text=True).stdout, delimiter=1, dtype=int)
-    pos_array = np.genfromtxt(subprocess.run("bcftools query -f '%POS\n'" + " " + args.vcf, shell=True, capture_output=True, text=True).stdout, delimiter=1, dtype=int)
+    #snp_array = np.genfromtxt(subprocess.run("bcftools query -f '[%GT]\n'" + " " + args.vcf, shell=True, capture_output=True, text=True).stdout, delimiter=1, dtype=int)
+    #pos_array = np.genfromtxt(subprocess.run("bcftools query -f '%POS\n'" + " " + args.vcf, shell=True, capture_output=True, text=True).stdout, delimiter=1, dtype=int)
 
+    pos_array = read_np_array(args.positions)
+    snp_array = read_np_matrix(args.snps)
+    
     #Read in phenotypes
     phen_array = (pd.read_csv(args.phenotype, sep='\t', nrows=length)["Phenotype"])
     phen_array[np.isnan(phen_array)] = 255
