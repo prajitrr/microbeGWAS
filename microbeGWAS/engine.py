@@ -92,7 +92,7 @@ def main():
         X = pruned_snp_array[:,:-1]
         y = pruned_snp_array[:,-1]
         fitted_model = model.fit(X, y)
-        data = np.column_stack((pruned_array[:,0], fitted_model.coefs_[0]))
+        data = np.column_stack((pruned_array[:,0], fitted_model.coef_[0]))
         header = "POS\tBETA"
     else:
         np.random.shuffle(pruned_snp_array)
@@ -105,7 +105,7 @@ def main():
         
         f1 = f1_score(test[:,-1],fitted_model.predict(test[:,:-1]))
         f1_col = np.full((len(pruned_array[:,0]),), f1)
-        data = np.column_stack((pruned_array[:,0], fitted_model.coefs_[0], f1_col))
+        data = np.column_stack((pruned_array[:,0], fitted_model.coef_[0], f1_col))
         header = "POS\tBETA\tF1"
 
     if args.out:
