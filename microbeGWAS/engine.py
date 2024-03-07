@@ -43,8 +43,8 @@ def main():
     args = parser.parse_args()
 
     #Call bcftools to process the VCF file and capture the output
-    snp_array = read_np_matrix(subprocess.check_output(["./snp_genotypes.sh"] + [args.vcf]))
-    pos_array = read_np_array(subprocess.check_output(["./snp_positions.sh"] + [args.vcf]))
+    snp_array = read_np_matrix(subprocess.check_output(["snp_genotypes.sh"] + [args.vcf]))
+    pos_array = read_np_array(subprocess.check_output(["snp_positions.sh"] + [args.vcf]))
 
     #Read in phenotypes
     phen_array = (pd.read_csv(args.phenotype, sep='\t', nrows=length)["Phenotype"])
