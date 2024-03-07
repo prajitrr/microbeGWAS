@@ -33,12 +33,12 @@ def main():
                        type=str)
   
     parser.add_argument("phenotype", help="Specify TSV file of phenotypes for each sample.", \
-                       type=str)
+                        type=str)
     
     parser.add_argument('--test', '-t', action='store_true', help='Set the tool to randomly split input data into train and test data (80/20 split).', required=False)
 
-    parser.add_argument("-o", "--out", help="Write output to specified text file path.", \
-                       "Default: stdout", metavar="FILE", type=str, required=False)
+    parser.add_argument("-o", "--out", help="Write output to specified text file path. Default: stdout", \
+                        metavar="FILE", type=str, required=False, default="stdout")
     
     args = parser.parse_args()
 
