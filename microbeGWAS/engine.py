@@ -110,6 +110,7 @@ def main():
     header = "POS\tBETA\tP_VAL"
     
     data = np.column_stack((pruned_array[:,0], beta, p_vals))
+    data = data[data[:, 0].argsort()]
 
     if args.out:
         save_to_file_with_header(args.out, data, header)
