@@ -83,11 +83,12 @@ def main():
         
         pruned_chunks = [row_removal(chunk) for chunk in ld_chunks]
         pruned_array = np.vstack(pruned_chunks)
+        snp_array = (pruned_array[:,1:-2]).astype(np.bool_)
     else:
         pruned_array = np.concatenate((pos_array.reshape(-1,1),x), axis=1)
+        snp_array = (pruned_array[:,1:]).astype(np.bool_)
     
     #Run GWAS
-    snp_array = (pruned_array[:,1:]).astype(np.bool_)
     dof = len(y) - 2
     
     n00 = np.sum(~snp_array & ~y.T, axis=1)
