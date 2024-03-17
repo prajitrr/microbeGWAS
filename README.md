@@ -19,7 +19,7 @@ The data used is simulated data from the tool [BacGWASim](https://www.microbiolo
    Additional Considerations: Note that if you do not have root permissions, instead of running `python setup.py install`, you may have to run the commands below.
    ```
    python setup.py install --user
-   export PATH="$PATH:$PWD"
+   export PATH=$PATH:$HOME/.local/bin
    ```
    Also, if you are using a virtual environment such as `anaconda`, the only dependencies other than `bcftools`, `numpy` and `scipy` may come pre-installed.
 
