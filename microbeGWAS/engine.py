@@ -21,9 +21,7 @@ def main():
     parser = argparse.ArgumentParser(prog="microbeGWAS", 
                                      description="Command-line tool to perform GWAS on haploid bacterial data."
                                     )
-    parser.add_argument("positions", help="Text file of SNP positions.", \
-                       type=str)
-
+    
     parser.add_argument("vcf", help="VCF file of SNPs.", \
                        type=str)
   
