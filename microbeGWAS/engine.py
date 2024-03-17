@@ -14,7 +14,7 @@ def row_removal(chunk):
     return np.concatenate((uniques_pos.reshape(-1,1), uniques), axis=1)
 
 def save_to_file_with_header(file_path, data, header):
-    np.savetxt(file_path, data, delimiter='\t', header=header, comments='')
+    np.savetxt(file_path, data, delimiter='\t', header=header, comments='',fmt=['%d']+['%f']*2)
 
 def main():
     #Parse command line arguments
